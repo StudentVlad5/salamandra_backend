@@ -1,4 +1,4 @@
-Start project for the barbershops_backend
+Start project for the Salamandra coctail bar backend
 ## Developers
 
 - [Julia Golban](https://github.com/JuliaGolban)
