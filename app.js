@@ -2,7 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
 const { errorHandler } = require('./helpers');
-const { routerAuth, routerMenu, routerAdmin } = require('./routes/api');
+const { routerAuth, routerMenu, routerAdmin, routerProduct } = require('./routes/api');
 
 const app = express();
 
@@ -23,6 +23,7 @@ app.use("/uploads", express.static(`${__dirname}/images`));
 
 app.use('/api/auth', routerAuth);
 app.use('/api/menu', routerMenu);
+app.use('/api/product', routerProduct);
 app.use('/api/admin', routerAdmin);
 
 app.use((req, res) => {

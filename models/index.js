@@ -2,12 +2,14 @@ const {
   Users,
   userValidationSchema,
   userUpdateValidationSchema,
-} = require('./users');
-const { Menu, menuValidationSchema } = require('./menu');
-
+} = require("./users");
+const { Menu, menuValidationSchema } = require("./menu");
+const { Product, productValidationSchema } = require("./product");
 
 module.exports = {
   Users,
-  Menu, 
+  Menu,
   menuValidationSchema,
+  Product,
+  productValidationSchema,
 };
