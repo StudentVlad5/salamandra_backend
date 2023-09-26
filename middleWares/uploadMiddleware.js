@@ -1,13 +1,13 @@
 const multer = require('multer');
 const path = require('path');
-const FILE_DIR = path.join(__dirname, '../images/', 'cocktails');
+const FILE_DIR = path.join(__dirname, '../images/', '');
 
 const multerConfig = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, FILE_DIR);
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + file.originalname);
+    cb(null, file.originalname);
   },
 });
 

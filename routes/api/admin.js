@@ -1,31 +1,31 @@
-const express = require('express');
-const { menu } = require('../../controllers');
+const express = require("express");
+const { menu } = require("../../controllers");
 
-const { ctrlWrapper, authMiddleware, upload } = require('../../middleWares');
+const { ctrlWrapper, authMiddleware, upload } = require("../../middleWares");
 
 const router = express.Router();
 
-router.get('/', ctrlWrapper(authMiddleware), ctrlWrapper(menu.getMenu));
+router.get("/", ctrlWrapper(authMiddleware), ctrlWrapper(menu.getMenu));
 
 router.post(
-  '/create',
+  "/create",
   ctrlWrapper(authMiddleware),
-  ctrlWrapper(menu.createMenu),
-  upload.single('images')
+  upload.single("images"),
+  ctrlWrapper(menu.createMenu)
 );
 
-router.get('/:id', ctrlWrapper(authMiddleware), ctrlWrapper(menu.getMenuById));
+router.get("/:id", ctrlWrapper(authMiddleware), ctrlWrapper(menu.getMenuById));
 
 router.delete(
-  '/:id',
+  "/:id",
   ctrlWrapper(authMiddleware),
   ctrlWrapper(menu.deleteMenu)
 );
 
 router.patch(
-  '/:id',
+  "/:id",
   ctrlWrapper(authMiddleware),
-  upload.single('images'),
+  upload.single("images"),
   ctrlWrapper(menu.updateMenu)
 );
 
