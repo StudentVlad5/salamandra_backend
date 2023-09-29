@@ -18,6 +18,12 @@ app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', '*');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
+  }
   next();
 });
 app.use(express.urlencoded({ extended: true }));
