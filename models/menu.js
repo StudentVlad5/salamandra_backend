@@ -1,5 +1,5 @@
-const Joi = require("joi");
-const mongoose = require("mongoose");
+const Joi = require('joi');
+const mongoose = require('mongoose');
 
 const menuValidationSchema = Joi.object({
   article: Joi.number().min(1).max(32).required(),
@@ -9,6 +9,7 @@ const menuValidationSchema = Joi.object({
   latin_name: Joi.string().min(3).max(32).required(),
   alcohol: Joi.array(),
   details: Joi.array(),
+  size: Joi.object(),
   price: Joi.number().min(1).max(32).required(),
   currency: Joi.string(),
   images: Joi.string().min(3).max(32),
@@ -19,7 +20,7 @@ const MenuSchema = new mongoose.Schema(
   {
     article: {
       type: Number,
-      required: [true, "Set article of item"],
+      required: [true, 'Set article of item'],
       unique: true,
     },
     active: {
@@ -33,24 +34,24 @@ const MenuSchema = new mongoose.Schema(
       },
       default: {
         value: 0,
-        mesure: "ml",
+        mesure: 'ml',
       },
     },
     product: {
       type: String,
-      required: [true, "Set product of item"],
+      required: [true, 'Set product of item'],
     },
     category: {
       type: String,
-      required: [true, "Set category of item"],
+      required: [true, 'Set category of item'],
     },
     name: {
       type: String,
-      required: [true, "Set name of item"],
+      required: [true, 'Set name of item'],
     },
     latin_name: {
       type: String,
-      required: [true, "Set latin_name of item"],
+      required: [true, 'Set latin_name of item'],
     },
     alcohol: {
       type: Array,
@@ -60,15 +61,15 @@ const MenuSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      required: [true, "Set price"],
+      required: [true, 'Set price'],
     },
     currency: {
       type: String,
-      default: "₴",
+      default: '₴',
     },
     images: {
       type: String,
-      default: "none",
+      default: 'none',
     },
     admin: {
       type: String,
@@ -84,6 +85,6 @@ const MenuSchema = new mongoose.Schema(
   }
 );
 
-const Menu = mongoose.model("menu", MenuSchema);
+const Menu = mongoose.model('menu', MenuSchema);
 
 module.exports = { Menu, menuValidationSchema };
