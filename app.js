@@ -1,6 +1,11 @@
 const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
+const corsOptions ={
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
 const { errorHandler } = require('./helpers');
 const { routerAuth, routerMenu, routerAdmin, routerProduct } = require('./routes/api');
 
@@ -9,7 +14,7 @@ const app = express();
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
 app.use(logger(formatsLogger));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', '*');
